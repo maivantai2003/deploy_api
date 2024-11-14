@@ -1,5 +1,5 @@
-const API_URL="http://vantai1234-001-site1.ltempurl.com/api"
-const HUB="http://vantai1234-001-site1.ltempurl.com/hub"
+const API_URL="https://app-jobassignment-g8eccja7dramgch9.canadacentral-01.azurewebsites.net/api"
+const HUB="https://app-jobassignment-g8eccja7dramgch9.canadacentral-01.azurewebsites.net/hub"
 const API_ENDPOINTS = {
     NHAVIEN:`${API_URL}/NhanVien`,
     PHONGBAN:`${API_URL}/PhongBan`,

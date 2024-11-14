@@ -12,6 +12,7 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import { useDispatch } from "react-redux";
 import { addFile} from "../../redux/file/fileSlice";
 import { createChiTietFile } from "../../redux/fileassignment/fileassignmentSlice";
+import API_ENDPOINTS from "../../constant/linkapi";
 const FileUpload = ({ isOpen, onRequestClose, maPhanCong,maCongViec}) => {
   const inputRef = useRef();
   const dropRef = useRef();
@@ -72,7 +73,7 @@ const FileUpload = ({ isOpen, onRequestClose, maPhanCong,maCongViec}) => {
         formData.append("file", file);
 
         return axios
-          .post("https://localhost:7131/api/FileUpload/Upload", formData, {
+          .post(`${API_ENDPOINTS.URL}/FileUpload/Upload`, formData, {
             onUploadProgress: (progressEvent) => {
               const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total

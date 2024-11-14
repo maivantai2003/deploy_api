@@ -304,7 +304,7 @@ const handleUpload = async () => {
       formData.append("file", file);
 
       return axios
-        .post("https://localhost:7131/api/FileUpload/Upload", formData)
+        .post(`${API_ENDPOINTS.URL}/FileUpload/Upload`, formData)
         .then((response) => {
           responses.push({
             name: file.name,

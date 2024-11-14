@@ -1,5 +1,5 @@
-const API_URL="https://ce45-2401-d800-bb7f-f9ac-c4ea-2b76-d7e-1373.ngrok-free.app/api"
-const HUB="https://ce45-2401-d800-bb7f-f9ac-c4ea-2b76-d7e-1373.ngrok-free.app/hub"
+const API_URL="http://vantai1234-001-site1.ltempurl.com/api"
+const HUB="http://vantai1234-001-site1.ltempurl.com/hub"
 const API_ENDPOINTS = {
     NHAVIEN:`${API_URL}/NhanVien`,
     PHONGBAN:`${API_URL}/PhongBan`,

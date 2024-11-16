@@ -97,6 +97,18 @@ const AddTask = ({ open, setOpen, phanDuAn, congViecCha, duAn }) => {
           }
         );
         await Promise.all(departmentPromises);
+        await dispatch(
+          sendNotification({
+            maCongViec: result.maCongViec,
+            tenCongViec: CongViec.tenCongViec,
+            noiDung: generateDeadlineNotification(
+              CongViec.tenCongViec,
+              CongViec.thoiGianKetThuc
+            ),
+            thoiGianKetThuc: CongViec.thoiGianKetThuc,
+            email: selectedDepartment.map((item) => item.email).join(","),
+          })
+        );
         setTimeout(async () => {
           const emailPromises = selectedDepartment.map((department) =>
             dispatch(
@@ -110,29 +122,7 @@ const AddTask = ({ open, setOpen, phanDuAn, congViecCha, duAn }) => {
           );
           await Promise.all(emailPromises);
           console.log("Email đã được gửi!");
-        }, 10000);
-        // selectedDepartment.forEach((department) => {
-        //   dispatch(
-        //     sendGmail({
-        //       name: department.responsiblePerson,
-        //       toGmail: department.email,
-        //       subject: "Thông Tin Phân Công Dự Án",
-        //       body: generateEmailTemplateForManager(department, CongViec),
-        //     })
-        //   );
-        // });
-        await dispatch(
-          sendNotification({
-            maCongViec: result.maCongViec,
-            tenCongViec: CongViec.tenCongViec,
-            noiDung: generateDeadlineNotification(
-              CongViec.tenCongViec,
-              CongViec.thoiGianKetThuc
-            ),
-            thoiGianKetThuc: CongViec.thoiGianKetThuc,
-            email: selectedDepartment.map((item) => item.email).join(","),
-          })
-        );
+        }, 5000);
       }
       if (Array.isArray(selectedEmployees) && selectedEmployees.length > 0) {
         const employeePromises = selectedEmployees.map(async (employee) => {
@@ -156,6 +146,18 @@ const AddTask = ({ open, setOpen, phanDuAn, congViecCha, duAn }) => {
           );
         });
         await Promise.all(employeePromises);
+        await dispatch(
+          sendNotification({
+            maCongViec: result.maCongViec,
+            tenCongViec: CongViec.tenCongViec,
+            noiDung: generateDeadlineNotification(
+              CongViec.tenCongViec,
+              CongViec.thoiGianKetThuc
+            ),
+            thoiGianKetThuc: CongViec.thoiGianKetThuc,
+            email: selectedEmployees.map((item) => item.email).join(","),
+          })
+        );
         setTimeout(async () => {
           const employeeEmailPromises = selectedEmployees.map((employee) =>
             dispatch(
@@ -169,29 +171,7 @@ const AddTask = ({ open, setOpen, phanDuAn, congViecCha, duAn }) => {
           );
           await Promise.all(employeeEmailPromises);
           console.log("Email đã được gửi!");
-        }, 10000);
-        // selectedEmployees.forEach((employee) => {
-        //   dispatch(
-        //     sendGmail({
-        //       name: employee.tenNhanVien,
-        //       toGmail: employee.email,
-        //       subject: "Thông Tin Phân Công Dự Án",
-        //       body: generateEmailTemplate(employee, CongViec),
-        //     })
-        //   );
-        // });
-        await dispatch(
-          sendNotification({
-            maCongViec: result.maCongViec,
-            tenCongViec: CongViec.tenCongViec,
-            noiDung: generateDeadlineNotification(
-              CongViec.tenCongViec,
-              CongViec.thoiGianKetThuc
-            ),
-            thoiGianKetThuc: CongViec.thoiGianKetThuc,
-            email: selectedEmployees.map((item) => item.email).join(","),
-          })
-        );
+        }, 5000);
       }
       await dispatch(fetchByIdProject(Number(duAn)));
       toast.success("Thêm thành công")

@@ -130,7 +130,7 @@ const Departments = () => {
         </div>
       </td>
 
-      <td className="p-2">{department.truongPhong===null?"Chưa Có":department.truongPhong.tenNhanVien}</td>
+      <td className="p-2">{department.truongPhong?.tenNhanVien || "Chưa Có"}</td>
       <td>
         <button
           // onClick={() => userStatusClick(user)}

@@ -9,7 +9,7 @@ export function getConnection() {
       .withUrl(API_ENDPOINTS.HUB_URL, {
         transport: HttpTransportType.WebSockets | HttpTransportType.LongPolling,
       })
-      .withAutomaticReconnect([0, 2000, 10000, 30000])
+      .withAutomaticReconnect()
       .configureLogging(LogLevel.Information)
       .build();
       
